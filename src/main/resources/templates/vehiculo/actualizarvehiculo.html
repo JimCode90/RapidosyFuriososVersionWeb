@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Rapidos y Furiosos | Actualizar Vehículo </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+
+
+<body>
+<div class="container">
+    <h1>Actualización de Vehículo</h1>
+    <form th:action="@{/vehiculo/actualizar/{id}(id=${listavehiculo.codigo})}" method="post" th:object="${listavehiculo}">
+        <div class="row">
+            <div class="col-6">
+                <label for="txtCod" class="form-label">Código:</label>
+                <input type="text" id="txtCod" name="txtCod" class="form-control" readonly th:field="*{codigo}">
+            </div>
+            <div class="col-6">
+                <label for="txtPla" class="form-label">Placa:</label>
+                <input type="text" id="txtPla" name="txtPla" class="form-control" th:field="*{placa}">
+            </div>
+            <div class="col-6">
+                <label for="txtMod" class="form-label">Modelo:</label>
+                <input type="text" id="txtMod" name="txtMod" class="form-control" th:field="*{modelo}">
+            </div>
+            <div class="col-6">
+                <label for="txtAni" class="form-label">Año:</label>
+                <input type="number" id="txtAni" name="txtAni" class="form-control" min="1900" th:field="*{anio}">
+            </div>
+            <div class="col-6">
+                <label for="cboMarca" class="form-label">Marca:</label>
+                <select class="form-select" id="cboMarca" name="cboMarca" required th:field="*{marca}">
+                    <option value="0">Seleccione una marca</option>
+                    <option th:each="mar: ${listamarca}" th:value="${mar.codigo}" th:text="${mar.nombre}"></option>
+                </select>
+            </div>
+            <div class="col-6">
+                <label for="cboColor" class="form-label">Color:</label>
+                <select class="form-select" id="cboColor" name="cboColor" required th:field="*{color}">
+                    <option value="0">Seleccione un color</option>
+                    <option th:each="col: ${listacolor}" th:value="${col.codigo}" th:text="${col.nombre}"></option>
+                </select>
+            </div>
+            <div class="col-6">
+                <label for="cboCliente" class="form-label">Cliente:</label>
+                <select class="form-select" id="cboCliente" name="cboCliente" required th:field="*{cliente}">
+                    <option value="0">Seleccione un cliente</option>
+                    <option th:each="cli: ${listacliente}" th:value="${cli.codigo}" th:text="${cli.nombre + ' ' + cli.apellidopaterno + ' ' + cli.apellidomaterno}"></option>
+                </select>
+            </div>
+            <div class="col-6">
+                <label for="chkEst" class="form-label">Estado:</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="chkEst" name="chkEst" th:field="*{estado}">
+                    <label class="form-check-label" for="chkEst">
+                        Habilitado
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="mb-3"></div>
+        <button type="submit" class="btn btn-success">Actualizar</button>
+        <a th:href="@{/vehiculo/listar}" class="btn btn-dark">Regresar</a>
+    </form>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+
+
+</html>
