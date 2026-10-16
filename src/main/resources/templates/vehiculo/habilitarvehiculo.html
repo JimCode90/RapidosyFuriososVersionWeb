@@ -41,7 +41,7 @@
                 <td th:text="${veh.anio}"></td>
                 <td th:text="${veh.marca.nombre}"></td>
                 <td th:text="${veh.color.nombre}"></td>
-                <td th:text="${veh.cliente.nombre + ' ' + veh.cliente.apellidopaterno}"></td>
+                <td th:text="${veh.cliente.nombre + ' ' + veh.cliente.apellidopaterno + ' ' + veh.cliente.apellidomaterno}"></td>
                 <td th:text="${veh.estado ? 'Habilitado' : 'Deshabilitado'}"></td>
                 <td><a th:href="@{/vehiculo/habilitar/{id}(id=${veh.codigo})}" class="btn btn-warning">Seleccionar</a></td>
                 <td><a th:href="@{/vehiculo/deshabilitar/{id}(id=${veh.codigo})}" class="btn btn-danger">Seleccionar</a></td>
